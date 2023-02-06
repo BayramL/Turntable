@@ -6,7 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import HostEvents from '../views/HostEvents.vue'
-
+import PartyView from '../views/PartyView.vue'
 Vue.use(Router)
 
 /**
@@ -59,9 +59,17 @@ const router = new Router({
       name:"hostEvents",
       component: HostEvents,
       meta:{
+        requiresAuth:true
+      }
+    },
+    {
+      path:"/events/:id",
+      name:"party",
+      component:PartyView,
+      meta:{
         requiresAuth:false
       }
-    }
+    },
   ]
 })
 

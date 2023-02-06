@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/songs")
+@CrossOrigin
 public class SongController {
     private EventDao eventDao;
     private SongDao songDao;
