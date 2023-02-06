@@ -4,16 +4,17 @@ public class Song {
     private String songId;
     private String name;
     private String artist;
-    private int likes;
+    private String picture;
 
     public Song() {
 
     }
 
-    public Song(String songId, String name, String artist, String suggested) {
+    public Song(String songId, String name, String artist, String picture) {
         this.songId = songId;
         this.name = name;
         this.artist = artist;
+        this.picture = picture;
     }
 
     public String getSongId() {
@@ -40,11 +41,11 @@ public class Song {
         this.artist = artist;
     }
 
-    public int getLikes() {
-        return likes;
+    public String getPicture() {
+        return this.picture;
     }
 
-    public void setLikes(int likes) {
-        this.likes = likes;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }
