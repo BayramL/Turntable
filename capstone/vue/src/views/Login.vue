@@ -32,7 +32,9 @@
         required
       />
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+     <!--  <router-link :to="{name:'hostEvents'}"><button type = "submit">Sign in</button></router-link> -->
+
+      <button type="submit">Sign in</button> 
     </form>
   </div>
 </template>
@@ -60,7 +62,14 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            // this.$router.push("/hostEvents");
+             if(response.data.user.role === 'ROLE_DJ'){
+               this.$router.push("/djEvents");
+            }
+             else if(response.data.user.role==='ROLE_HOST'){
+              this.$router.push("/hostEvents");
+            }
+        
           }
         })
         .catch(error => {
@@ -70,7 +79,10 @@ export default {
             this.invalidCredentials = true;
           }
         });
+
     }
+
+
   }
 };
 </script>

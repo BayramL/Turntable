@@ -1,14 +1,18 @@
 <template>
   <div>
-    <h1>HELLO</h1>
-    <host-event-component />
+ 
+    <host-events-component></host-events-component>
   </div>
 </template>
 
 <script>
-import HostEventComponent from "../components/HostEventComponent.vue";
+import HostEventsComponent from "../components/HostEventsComponent.vue"
+
+
 export default {
-  components: { HostEventComponent },
+  components: { HostEventsComponent 
+  
+  }
 };
 </script>
 
