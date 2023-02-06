@@ -14,6 +14,7 @@ public class User {
    private String password;
    @JsonIgnore
    private boolean activated;
+   private String role;
    private Set<Authority> authorities = new HashSet<>();
 
    public User() { }
@@ -72,6 +73,14 @@ public class User {
          String authority = role.contains("ROLE_") ? role : "ROLE_" + role;
          this.authorities.add(new Authority(authority));
       }
+   }
+
+   public String getRole() {
+      return role;
+   }
+
+   public void setRole(String role) {
+      this.role = role;
    }
 
    @Override

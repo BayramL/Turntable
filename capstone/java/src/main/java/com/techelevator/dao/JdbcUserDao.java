@@ -48,6 +48,28 @@ public class JdbcUserDao implements UserDao {
 	}
 
     @Override
+    public List<User> findDjs() {
+        List<User> list = new ArrayList<>();
+        String sql = "SELECT * FROM users WHERE role = 'ROLE_DJ'";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            list.add(mapRowToUser(results));
+        }
+        return list;
+    }
+
+    @Override
+    public List<User> findHosts() {
+        List<User> list = new ArrayList<>();
+        String sql = "SELECT * FROM users WHERE role = 'ROLE_HOST'";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            list.add(mapRowToUser(results));
+        }
+        return list;
+    }
+
+    @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
         String sql = "select * from users";
@@ -74,6 +96,16 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
+    public User findDjById(int id) {
+        String sql = "SELECT * FROM users WHERE role = 'ROLE_DJ' AND user_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
+        if (result.next()) {
+            return(mapRowToUser(result));
+        }
+        return null;
+    }
+
+    @Override
     public boolean create(String username, String password, String role) {
         String insertUserSql = "insert into users (username,password_hash,role) values (?,?,?)";
         String password_hash = new BCryptPasswordEncoder().encode(password);
@@ -82,6 +114,7 @@ public class JdbcUserDao implements UserDao {
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
     }
 
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));
@@ -89,6 +122,7 @@ public class JdbcUserDao implements UserDao {
         user.setPassword(rs.getString("password_hash"));
         user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
         user.setActivated(true);
+        user.setRole(rs.getString("role"));
         return user;
     }
 }
