@@ -48,9 +48,9 @@ public class JdbcSongDao implements SongDao {
     }
 
     public void addSongToSuggested(Song song, int eventId) {
-        String sql = "INSERT INTO songs(song_id, name, artist) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO songs(song_id, name, artist, picture) VALUES (?, ?, ?, ?)";
         String sql2 = "INSERT INTO event_songs(song_id, event_id, suggested) VALUES (?, ?, 'suggested')";
-        jdbcTemplate.update(sql, song.getSongId(), song.getName(), song.getArtist());
+        jdbcTemplate.update(sql, song.getSongId(), song.getName(), song.getArtist(), song.getPicture());
         jdbcTemplate.update(sql2, song.getSongId(), eventId);
     }
 
@@ -69,7 +69,7 @@ public class JdbcSongDao implements SongDao {
         song.setSongId(results.getString("song_id"));
         song.setName(results.getString("name"));
         song.setArtist(results.getString("artist"));
-        song.setLikes(results.getInt("likes"));
+        song.setPicture(results.getString("picture"));
         return song;
     }
 

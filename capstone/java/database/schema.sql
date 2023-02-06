@@ -25,7 +25,7 @@ CREATE TABLE songs (
     song_id varchar(30) NOT NULL UNIQUE,
     name varchar(50),
     artist varchar(30),
-    likes int DEFAULT 0,
+    picture varchar(100),
     CONSTRAINT PK_song_id PRIMARY KEY (song_id)
 );
 
