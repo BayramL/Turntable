@@ -36,17 +36,31 @@
 
       <button type="submit">Sign in</button> 
     </form>
+
+    <form>
+      <label for="eventID" >Event number:</label>
+      <input 
+      type ="number"
+      id="guestLogin"
+      placeholder="Your party ID"
+      v-model="idNumber"
+      />
+      <button type="submit" 
+      @click="goToPage"
+      > Go to event</button>
+    </form>
   </div>
 </template>
 
 <script>
 import authService from "../services/AuthService";
-
+//import EventService from "../services/EventService";
 export default {
   name: "login",
   components: {},
   data() {
     return {
+      idNumber:"",
       user: {
         username: "",
         password: ""
@@ -80,6 +94,17 @@ export default {
           }
         });
 
+    },
+    goToPage(){
+       this.$router.push({path:`/events/${this.idNumber}`});
+      //  EventService.getEvent(this.idNumber).then(
+      //     (response) =>{
+      //        if (response.status === 200) {
+      //          this.$router.push({path:`/events/${this.idNumber}`});
+      //        }
+         
+      //     }
+      // );
     }
 
 
