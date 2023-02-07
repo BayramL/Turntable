@@ -5,13 +5,13 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import HostEvents from '../views/HostEvents.vue'
 import PartyView from '../views/PartyView.vue'
 import DjView from '../views/DjView.vue'
 Vue.use(Router)
 import EditEventComponent from '../components/EditEventComponent.vue'
 //added this line below as well
 import AddEventComponent from '../components/AddEventComponent.vue'
+import HostEvents from '../views/HostEvents'
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -63,7 +63,7 @@ const router = new Router({
       name: "hostEvents",
       component: HostEvents,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {

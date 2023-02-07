@@ -1,22 +1,14 @@
 <template>
-
-  <div>
- 
-    <host-events-component></host-events-component>
-  
-  </div>
-  
+  <host-events-component/>
 </template>
 
 <script>
-import HostEventsComponent from "../components/HostEventsComponent.vue"
-
-
+import HostEventsComponent from '../components/HostEventsComponent.vue'
 export default {
-  components: { HostEventsComponent 
-  
-  }
-};
+  name:"hostEvents",
+  components: { HostEventsComponent },
+
+}
 </script>
 
 <style>
