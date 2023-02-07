@@ -2,7 +2,7 @@
   <div>
     <ul>
       <li v-for="song in songs" :key="song.id">
-        <img :src="song.picture" alt="album cover">
+        <img :src="song.picture" alt="album cover" />
         <div class="song-details">
           <p>{{ song.name }}</p>
           <p>{{ song.artist }}</p>
@@ -13,42 +13,41 @@
   </div>
 </template>
 
-<script>
-import SongService from '../services/SongService'
+<script scoped>
+import SongService from "../services/SongService";
 
 export default {
   data() {
     return {
-      songs: []
-    }
+      songs: [],
+    };
   },
   methods: {
     playSong(songId) {
       //this.$emit('song-selected', songId);
       this.$store.commit("CHANGE_TRACK", songId);
-    }
+    },
   },
   created() {
     SongService.getPlaylist(2)
-      .then(response => {
+      .then((response) => {
         this.songs = response.data;
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
-
 .playButton {
-    padding-right: 20px ;
+  padding-right: 20px;
 }
 
 * {
-    font-family: 'Righteous', cursive;
-    font-size: 15px;
+  font-family: "Righteous", cursive;
+  font-size: 15px;
 }
 
 li {
@@ -70,5 +69,4 @@ img {
 .song-details {
   flex: 1;
 }
-
 </style>
