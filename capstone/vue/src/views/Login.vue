@@ -153,7 +153,7 @@ width:350px;
   width: 45%;
   padding: 10px;
   background-color: transparent;
-   background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   text-align: left;
 }

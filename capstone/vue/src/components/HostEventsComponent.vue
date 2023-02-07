@@ -48,22 +48,21 @@ export default {
 
 <style>
 
-
 .eventDiv {
     background-color: rgba(33, 27, 61, 0.5);
     width: 75%;
     display: flex;
     justify-content: space-between;
-    border-radius: 30px;
+    border-radius: 50px;
     margin-bottom: 15px;
-    padding: 20px 20px;
+    padding: 15px 15px;
+    text-align: center;
 
 }
 
 li {
     text-align: center;
     list-style-type: none;
-    
 
 }
 </style>
