@@ -56,19 +56,10 @@ export default {
 
 <style scoped>
 * {
-    font-family: 'Righteous', cursive;
-    font-size: 15px;
+  font-family: "Righteous", cursive;
+  font-size: 15px;
 }
 
-li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  background-color: rgba(33, 27, 61, 0.5);
-  border-radius: 10px;
-  padding-left: 20px;
-  border: 1px solid black;
-}
 
 .albumImage {
   width: 50px;

@@ -18,6 +18,7 @@ if(currentToken != null) {
 
 export default new Vuex.Store({
   state: {
+    events: [],
     token: currentToken || '',
     user: currentUser || {},
     currentTrack: ""
@@ -41,6 +42,6 @@ export default new Vuex.Store({
     },
     CHANGE_TRACK(state, trackId) {
       state.currentTrack = trackId;
-    }
+    },
   }
 })

@@ -1,15 +1,31 @@
 <template>
- <div id="everything">
-  <div id="app">
-    <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+  <div
+    id="everything"
+    v-bind:style="`background-image:url(${require('./views/landing-Page.png')})`"
+  >
+    <div id="app">
+      <div id="nav">
+        <router-link v-bind:to="{ name: 'home' }">Home</router-link
+        >&nbsp;|&nbsp;
+        <router-link
+          v-bind:to="{ name: 'logout' }"
+          v-if="$store.state.token != ''"
+          >Logout</router-link
+        >
+      </div>
+      <router-view />
     </div>
-    <router-view />
-  </div>
   </div>
 </template>
-<style>
-
-
+<style scoped>
+#app {
+  background-color: rgba(33, 27, 61, 0.5);
+}
+#app > * {
+  color: white;
+  font-family: "Roboto", sans-serif;
+}
+#everything {
+  background-size: cover;
+}
 </style>

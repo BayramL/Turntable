@@ -52,12 +52,12 @@ button {
     margin-right: 20px;
 }
 .playButton {
-    padding-right: 20px ;
+  padding-right: 20px;
 }
 
 * {
-    font-family: 'Righteous', cursive;
-    font-size: 15px;
+  font-family: "Righteous", cursive;
+  font-size: 15px;
 }
 
 li {
@@ -79,5 +79,4 @@ li {
 .song-details {
   flex: 1;
 }
-
 </style>

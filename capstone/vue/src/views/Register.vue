@@ -1,88 +1,101 @@
 <template>
-  <div id="register" class="text-center">
-
-    <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
-      <div class="alert alert-danger" role="alert" v-if="registrationErrors">
-        {{ registrationErrorMsg }}
+  <div class="container">
+    <div id="register" class="text-center">
+      <div class="about-section">
+        <div class="about-logo">
+          <img v-bind:src="require('../assets/turntableLogo-v2.png')" />
+        </div>
+        <div class="about-text">
+          <h2>About</h2>
+          <p>
+            Welcome The TurnTable Show, We got Dj Big B From New York, WE got Dj
+            Emoney Also from The Empire State and We got the BigMollyMo in the
+            build shes throw up the Big P in the air, Shes represent Pittsburgh
+          </p>
+        </div>
       </div>
-      <label for="username" class="sr-only">Username</label>
 
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
+      <form class="form-register" @submit.prevent="register">
+        <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+        <div class="alert alert-danger" role="alert" v-if="registrationErrors">
+          {{ registrationErrorMsg }}
+        </div>
+        <label for="username" class="sr-only">Username</label>
 
-      <label for="password" class="sr-only">Password</label>
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          placeholder="Username"
+          v-model="user.username"
+          required
+          autofocus
+        />
 
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
+        <label for="password" class="sr-only">Password</label>
 
-      <input
-        type="password"
-        id="confirmPassword"
-        class="form-control"
-        placeholder="Confirm Password"
-        v-model="user.confirmPassword"
-        required
-      />
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          placeholder="Password"
+          v-model="user.password"
+          required
+        />
 
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Create Account
-      </button>
+        <input
+          type="password"
+          id="confirmPassword"
+          class="form-control"
+          placeholder="Confirm Password"
+          v-model="user.confirmPassword"
+          required
+        />
 
-      <select v-model="user.role" required>
-        <option value="DJ">DJ</option>
-        <option value="Host">Host</option>
-      </select>
+        <router-link :to="{ name: 'login' }">Have an account?</router-link>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          Create Account
+        </button>
 
-    </form>
+        <select v-model="user.role" required>
+          <option value="" disabled selected>Select an Option</option>
+          <option value="DJ">DJ</option>
+          <option value="Host">Host</option>
+        </select>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
-import authService from '../services/AuthService';
-
+import authService from "../services/AuthService";
 export default {
-  name: 'register',
+  name: "register",
   data() {
     return {
-      
       user: {
-        username: '',
-        password: '',
-        confirmPassword: '',
-        role: '',
+        username: "",
+        password: "",
+        confirmPassword: "",
+        role: "",
       },
       registrationErrors: false,
-      registrationErrorMsg: 'There were problems registering this user.',
+      registrationErrorMsg: "There were problems registering this user.",
     };
   },
   methods: {
     register() {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
-        this.registrationErrorMsg = 'Password & Confirm Password do not match.';
+        this.registrationErrorMsg = "Password & Confirm Password do not match.";
       } else {
         authService
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
-                path: '/login',
-                query: { registration: 'success' },
+                path: "/login",
+                query: { registration: "success" },
               });
             }
           })
@@ -90,23 +103,48 @@ export default {
             const response = error.response;
             this.registrationErrors = true;
             if (response.status === 400) {
-              this.registrationErrorMsg = 'Bad Request: Validation Errors';
+              this.registrationErrorMsg = "Bad Request: Validation Errors";
             }
           });
       }
     },
     clearErrors() {
       this.registrationErrors = false;
-      this.registrationErrorMsg = 'There were problems registering this user.';
+      this.registrationErrorMsg = "There were problems registering this user.";
     },
   },
 };
 </script>
 
-<style>
-  #register{
+<style scoped>
+select {
+  color: black;
+}
+.container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  width: 1080px;
+  max-width: 100%;
+  margin: 0px auto;
+}
+.about-section img {
+  max-width: 100%;
+}
+.about-section {
+  padding: 20px;
+
+  flex: 1;
+  padding: 20px;
+  width: 300px;
+  margin-right: 40px;
+  padding: 20px;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#register {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -154,5 +192,4 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: rgba(33, 27, 61);
 }
-
 </style>
