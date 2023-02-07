@@ -2,7 +2,7 @@
   <div class="container">
     <playlist-component class="left"/>
     <spotify-embed class="middle"/>
-    <suggested-component class="right"/>
+    <suggested-component class="right" />
   </div>
 </template>
 
@@ -10,9 +10,19 @@
 import PlaylistComponent from '../components/PlaylistComponent.vue'
 import SpotifyEmbed from '../components/SpotifyEmbed.vue'
 import SuggestedComponent from '../components/SuggestedComponent.vue'
-
+import EventServices from '../services/EventService'
 export default {
-  components: { PlaylistComponent, SpotifyEmbed, SuggestedComponent },
+  data() {
+      return {
+          eventId: -1
+      }
+  },
+  components: { 
+      PlaylistComponent, SpotifyEmbed, SuggestedComponent 
+  },
+  created() {
+    EventServices.getEventIdFromDj().then((response) => this.eventId = response.data)
+  }
 
 }
 

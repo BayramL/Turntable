@@ -21,4 +21,6 @@ public interface UserDao {
     List<User> findDjs();
 
     User findDjById(int id);
+
+    int getEventIdFromDj(User user);
 }
