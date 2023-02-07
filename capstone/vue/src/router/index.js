@@ -9,6 +9,8 @@ import HostEvents from '../views/HostEvents.vue'
 import PartyView from '../views/PartyView.vue'
 Vue.use(Router)
 import EditEventComponent from '../components/EditEventComponent.vue'
+//added this line below as well
+import AddEventComponent from '../components/AddEventComponent.vue'
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -78,7 +80,14 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    //Added these lines below 2/7 
+    {
+      path:"/addEvent",
+      name:"addEvent",
+      component:AddEventComponent
     }
+  
   ]
 })
 

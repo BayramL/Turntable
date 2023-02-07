@@ -56,7 +56,7 @@ public class SpotifyService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
+ 
         assert json != null;
         JsonNode tracks = json.get("tracks");
         JsonNode items = tracks.get("items");

@@ -1,8 +1,11 @@
 <template>
+
   <div>
  
     <host-events-component></host-events-component>
+  
   </div>
+  
 </template>
 
 <script>
@@ -17,4 +20,5 @@ export default {
 </script>
 
 <style>
+
 </style>
