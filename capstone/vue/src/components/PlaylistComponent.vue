@@ -8,6 +8,7 @@
           <p>{{ song.artist }}</p>
         </div>
         <button @click="playSong(song.songId)">Select</button>
+        <button @click="deleteSong.prevent(song.songId)">Delete</button>
       </li>
     </ul>
   </div>
@@ -26,10 +27,9 @@ export default {
   methods: {
     playSong(songId) {
       this.$store.commit("CHANGE_TRACK", songId);
-    }
-  },
-  created() {
-    EventServices.getEventIdFromDj().then((response) => {
+    },
+    getPlaylist() {
+        EventServices.getEventIdFromDj().then((response) => {
       this.currentEventId = response.data;
       SongService.getPlaylist(this.currentEventId)
         .then(response => {
@@ -39,19 +39,25 @@ export default {
           console.error(error);
         });
     });
+    }
+  },
+  created() {
+    this.getPlaylist();
   },
 }
 </script>
 
 <style scoped>
-
+button {
+    margin-right: 20px;
+}
 .playButton {
-    padding-right: 20px ;
+  padding-right: 20px;
 }
 
 * {
-    font-family: 'Righteous', cursive;
-    font-size: 15px;
+  font-family: "Righteous", cursive;
+  font-size: 15px;
 }
 
 li {
@@ -73,5 +79,4 @@ li {
 .song-details {
   flex: 1;
 }
-
 </style>

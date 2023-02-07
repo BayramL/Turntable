@@ -8,7 +8,7 @@
       <label for="eventDescription">Event Description:</label>
       <textarea id="eventDescription"></textarea>
     <div class="buttons">
-      <button @click="saveEvent">Save</button>
+      <button v-on:click.prevent="saveEvent">Save</button>
       <button @click="addHost">Add Host</button>
     </div>
     </form>
@@ -25,12 +25,13 @@ export default {
   },
 
   methods: {
-    //   EventService.updateEvent(this.eventId, this.events).then(
-    //       (response) => {
-    //           if(response.status === 201) {}
-    //       }
-    //   )
-      
+    saveEvent() {
+      EventService.updateEvent(this.event).then((response) => {
+        if (response.status === 201) {
+          this.$router.push({ name: "hostEvents" });
+        }
+      });
+    }
   },
 
   created() {
@@ -40,17 +41,8 @@ export default {
       }
     });
   },//stuff i worked on 2/7 from line 44-56
-    saveEvent() {
-      EventService.updateEvent(this.event).then((response) => {
-        if (response.status === 201) {
-          this.$router.push({ name: "hostEvents" });
-        }
-      });
-  },
-  addEvent(){
+  
     
-  },
-
 
 };
 </script>

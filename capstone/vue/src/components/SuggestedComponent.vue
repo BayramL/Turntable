@@ -7,7 +7,7 @@
           <p>{{ song.name }}</p>
           <p>{{ song.artist }}</p>
         </div>
-        <button @click="addSong">Add Song</button>
+        <button @click="addSongToPlaylist(song.songId)">Add Song</button>
         <button @click="deleteSong">Delete</button>
       </li>
     </ul>
@@ -25,9 +25,22 @@ export default {
     }
   },
   created() {
-    EventServices.getEventIdFromDj().then((response) => {
-      this.currentEventId = response.data;
-      SongService.getSuggested(this.currentEventId)
+    this.getSuggested();
+  },
+  methods: {
+      addSongToPlaylist(songId) {
+          SongService.addSongToPlaylist(this.currentEventId, songId)
+          this.getSuggested();
+      },
+      deleteSong() {
+          console.log("bye")
+          this.getSuggested();
+          
+      },
+      getSuggested() {
+        EventServices.getEventIdFromDj().then((response) => {
+        this.currentEventId = response.data;
+        SongService.getSuggested(this.currentEventId)
         .then(response => {
           this.songs = response.data;
         })
@@ -35,14 +48,7 @@ export default {
           console.error(error);
         });
     });
-  },
-  method: {
-      addSong() {
-          console.log("hi");
-      },
-      deleteSong() {
-          console.log("bye");
-      }
+    }
   }
   
 }
@@ -50,19 +56,10 @@ export default {
 
 <style scoped>
 * {
-    font-family: 'Righteous', cursive;
-    font-size: 15px;
+  font-family: "Righteous", cursive;
+  font-size: 15px;
 }
 
-li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  background-color: rgba(33, 27, 61, 0.5);
-  border-radius: 10px;
-  padding-left: 20px;
-  border: 1px solid black;
-}
 
 .albumImage {
   width: 50px;

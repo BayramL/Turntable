@@ -2,13 +2,13 @@
 
 <template>
   <div>
-      <form>
-          <input type="text" placeholder="eventTitle" v-model="eventTitle">
-          <textarea placeholder="eventDescription" v-model="eventDescription"></textarea>
-          <button @click="saveEvent">Save</button>
-          <button @click="goBack">Go Back</button>
+      <form >
+          <input type="text" placeholder="eventTitle" v-model="event.eventName">
+          <textarea placeholder="eventDescription" v-model="event.description"></textarea>
+          <button v-on:click.prevent="saveEvent">Save</button>
+          <!-- <button v-on:click="goBack">Go Back</button> -->
       </form>
-      <div v-if="error">{{error}}</div>
+      <!-- <div v-if="error">{{error}}</div> -->
   </div>
 </template>
 <script>
@@ -16,24 +16,23 @@ import EventService from "../services/EventService";
 export default {
     data(){
         return{
-            eventTitle:"",
-            eventDescription:"",
-            error: ""
+            event: {
+                description: "",
+                eventName: ""
+            }
         };
     },
     methods:{
-        goback(){
-            this.$router.go(-1)
-        },
+        // goback(){
+        //     this.$router.go(-1)
+        // },
         saveEvent(){
-            EventService.addEvent({
-                eventName: this.eventTitle,
-                eventDescription: this.eventDescription
-            })
-            .then(response=>{
-                if(response.status===201){
-                    this.$router.push({name:"hostEvents"});
-                    this.clearForm();
+            EventService.addEvent(this.event).then(
+                (response) =>{
+                if(response.status==201){
+                    alert("success")
+                    this.$router.push("/hostEvents");
+                    // this.clearForm();
                 }
             })
             .catch(error => {
