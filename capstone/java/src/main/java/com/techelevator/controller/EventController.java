@@ -59,5 +59,11 @@ public class EventController {
         eventDao.addDjToEvent(event, dj);
     }
 
+    @RequestMapping(path = "eventId", method = RequestMethod.GET)
+    public int getInt(Principal principal) {
+        User user = userDao.findByUsername(principal.getName());
+        return userDao.getEventIdFromDj(user);
+    }
+
 
 }

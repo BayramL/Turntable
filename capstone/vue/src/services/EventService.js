@@ -23,6 +23,9 @@ export default {
    //added code below 2/7
    addEvent(event){
        return axios.post('/events/newEvent',event);
+   },
+   getEventIdFromDj() {
+       return axios.get('events/eventId');
    }
 
 }

@@ -2,6 +2,8 @@
 <div class="entire-page">
   <!-- Found out that assets is for IMAGES to pull from ¯\_(ツ)_/¯ go figure-->
   <img src="@/assets/turntableLogo.png" class="logo"/>
+
+
 <div class="form-container">
 
 
@@ -132,7 +134,7 @@ export default {
 .logo{
   margin-top:10px;
   margin-left:10px;
-width:350px;
+  width:350px;
 }
 .entire-page{
  background-image:url('landing-Page.png');
@@ -156,13 +158,17 @@ width:350px;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   text-align: left;
+  color: aliceblue;
+  
 }
 
 #eventLogin {
 
   background-color:transparent;
-   background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   text-align: left;
+  padding-left: 15px;
+  margin: 10px;
 }
 </style>

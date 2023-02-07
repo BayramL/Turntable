@@ -114,6 +114,16 @@ public class JdbcUserDao implements UserDao {
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
     }
 
+    public int getEventIdFromDj(User user) {
+        int eventId = -1;
+        String sql = "SELECT event_id FROM events WHERE dj_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, user.getId());
+        if (results.next()) {
+            eventId = results.getInt("event_id");
+        }
+        return eventId;
+    }
+
 
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
