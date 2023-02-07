@@ -1,5 +1,9 @@
 <template>
+<div class="form-container">
+
+
   <div id="login" class="text-center">
+
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
@@ -32,11 +36,14 @@
         required
       />
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
-     <!--  <router-link :to="{name:'hostEvents'}"><button type = "submit">Sign in</button></router-link> -->
 
       <button type="submit">Sign in</button> 
     </form>
+  </div>
 
+
+
+  <div id="eventLogin">
     <form>
       <label for="eventID" >Event number:</label>
       <input 
@@ -50,11 +57,13 @@
       > Go to event</button>
     </form>
   </div>
+
+</div>
 </template>
 
 <script>
 import authService from "../services/AuthService";
-//import EventService from "../services/EventService";
+import EventService from "../services/EventService";
 export default {
   name: "login",
   components: {},
@@ -96,18 +105,49 @@ export default {
 
     },
     goToPage(){
-       this.$router.push({path:`/events/${this.idNumber}`});
-      //  EventService.getEvent(this.idNumber).then(
-      //     (response) =>{
-      //        if (response.status === 200) {
-      //          this.$router.push({path:`/events/${this.idNumber}`});
-      //        }
+
+      EventService.getAllEvents().then(
+                (response) =>{
+                  console.log("molly" + response)
+                    // this.events=response.data;
+                }
+            );
+      //  this.$router.push({path:`/events/${this.idNumber}`});
+    //    EventService.getEvent(this.idNumber).then(
+    //       (response) =>{
+    //         console.log("molly")
+    //          if (response.status === 200 && response.data.length !== 0) {
+    //            this.$router.push({path:`/events/${this.idNumber}`});
+    //          }
          
-      //     }
-      // );
-    }
+    //       }
+    //   );
+     }
 
 
   }
 };
 </script>
+
+<style>
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.form-signin {
+  width: 45%;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  text-align: left;
+}
+
+#eventLogin {
+  width: 45%;
+  padding: 1rem;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  text-align: left;
+}
+</style>

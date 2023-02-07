@@ -8,6 +8,7 @@ import store from '../store/index'
 import HostEvents from '../views/HostEvents.vue'
 import PartyView from '../views/PartyView.vue'
 Vue.use(Router)
+import EditEventComponent from '../components/EditEventComponent.vue'
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -55,21 +56,29 @@ const router = new Router({
       }
     },
     {
-      path:"/hostEvents",
-      name:"hostEvents",
+      path: "/hostEvents",
+      name: "hostEvents",
       component: HostEvents,
-      meta:{
-        requiresAuth:true
+      meta: {
+        requiresAuth: true
       }
     },
     {
-      path:"/events/:id",
-      name:"party",
-      component:PartyView,
-      meta:{
-        requiresAuth:false
+      path: "/events/:id",
+      name: "party",
+      component: PartyView,
+      meta: {
+        requiresAuth: false
       }
     },
+    {
+      path: "/events/editEvent",
+      name: "editEvent",
+      component: EditEventComponent,
+      meta: {
+        requiresAuth: false
+      }
+    }
   ]
 })
 
