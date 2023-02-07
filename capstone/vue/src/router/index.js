@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import HostEvents from '../views/HostEvents.vue'
 import PartyView from '../views/PartyView.vue'
+import DjView from '../views/DjView.vue'
 Vue.use(Router)
 
 /**
@@ -70,6 +71,14 @@ const router = new Router({
         requiresAuth:false
       }
     },
+    {
+      path:"/djEvents",
+      name:"djEvents",
+      component: DjView,
+      meta: {
+        requiresAuth:true
+      }
+    }
   ]
 })
 
