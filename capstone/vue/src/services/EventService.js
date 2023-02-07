@@ -18,6 +18,11 @@ export default {
    },
    deleteEvent(id) {
        return axios.delete(`/events/delete-event/${id}`);
+   },
+ 
+   //added code below 2/7
+   addEvent(event){
+       return axios.post('/events/newEvent',event);
    }
 
 }
