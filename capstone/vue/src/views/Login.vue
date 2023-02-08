@@ -1,70 +1,69 @@
 <template>
-<div class="entire-page">
-  <!-- Found out that assets is for IMAGES to pull from ¯\_(ツ)_/¯ go figure-->
-  <img src="@/assets/turntableLogo.png" class="logo"/>
 
+  <div class="entire-page">
+    <!-- Found out that assets is for IMAGES to pull from ¯\_(ツ)_/¯ go figure-->
+    <img src="@/assets/turntableLogo.png" class="logo" />
 
-<div class="form-container">
+    <div class="form-container" v-show="showLoader === false">
+      <div id="login" class="text-center">
+        <form class="form-signin" @submit.prevent="login">
+          <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            v-if="invalidCredentials"
+          >
+            Invalid username and password!
+          </div>
+          <div
+            class="alert alert-success"
+            role="alert"
+            v-if="this.$route.query.registration"
+          >
+            Thank you for registering, please sign in.
+          </div>
+          <label for="username" class="sr-only">Username</label>
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            placeholder="Username"
+            v-model="user.username"
+            required
+            autofocus
+          />
+          <label for="password" class="sr-only">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Password"
+            v-model="user.password"
+            required
+          />
+          <router-link :to="{ name: 'register' }">Need an account?</router-link>
 
-
-  <div id="login" class="text-center">
-
-    <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        v-if="invalidCredentials"
-      >Invalid username and password!</div>
-      <div
-        class="alert alert-success"
-        role="alert"
-        v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-
-      <button type="submit">Sign in</button> 
-    </form>
+          <button type="submit">Sign in</button>
+        </form>
+      </div>
+      <div id="eventLogin">
+        <form>
+          <label for="eventID">Event number:</label>
+          <input
+            type="number"
+            id="guestLogin"
+            placeholder="Your party ID"
+            v-model="idNumber"
+          />
+          <button type="submit" @click.prevent="goToPage">Go to event</button>
+        </form>
+      </div>
+    </div>
+    <div v-show="showLoader === true" class="">
+      <img v-bind:src="require('../assets/Party.gif')" />
+    </div>
   </div>
-
-
-
-  <div id="eventLogin">
-    <form>
-      <label for="eventID" >Event number:</label>
-      <input 
-      type ="number"
-      id="guestLogin"
-      placeholder="Your party ID"
-      v-model="idNumber"
-      />
-      <button type="submit" 
-      @click.prevent="goToPage"
-      > Go to event</button>
-    </form>
-  </div>
-
-</div>
-</div>
+  
 </template>
 
 <script>
@@ -73,82 +72,78 @@ import EventService from "../services/EventService";
 export default {
   name: "login",
   components: {},
+
   data() {
     return {
-      idNumber:"",
+      showLoader: true,
+      idNumber: "",
       user: {
         username: "",
-        password: ""
+        password: "",
       },
-      invalidCredentials: false
+      invalidCredentials: false,
     };
   },
   methods: {
     login() {
       authService
         .login(this.user)
-        .then(response => {
+        .then((response) => {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
             // this.$router.push("/hostEvents");
-             if(response.data.user.role === 'ROLE_DJ'){
-               this.$router.push("/djEvents");
-            }
-             else if(response.data.user.role==='ROLE_HOST'){
+            if (response.data.user.role === "ROLE_DJ") {
+              this.$router.push("/djEvents");
+            } else if (response.data.user.role === "ROLE_HOST") {
               this.$router.push("/hostEvents");
             }
-        
           }
         })
-        .catch(error => {
+        .catch((error) => {
           const response = error.response;
 
           if (response.status === 401) {
             this.invalidCredentials = true;
           }
         });
-
     },
-    goToPage(){
-
-      
-       
-       EventService.getEvent(this.idNumber).then(
-          (response) =>{
-            console.log("molly")
-             if (response.status === 200 && response.data.length !== 0) {
-               this.$router.push({path:`/events/${this.idNumber}`});
-             }
-         
-          }
-      );
-     }
-
-
-  }
+    goToPage() {
+      EventService.getEvent(this.idNumber).then((response) => {
+        console.log("molly");
+        if (response.status === 200 && response.data.length !== 0) {
+          this.$router.push({ path: `/events/${this.idNumber}` });
+        }
+      });
+    },
+  },
+  mounted: function () {
+    window.setTimeout(() => {
+      this.showLoader = false;
+    }, 2500);
+  },
 };
 </script>
 
 <style>
-.logo{
-  margin-top:10px;
-  margin-left:10px;
-  width:350px;
+.logo {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 350px;
 }
-.entire-page{
- background-image:url('landing-Page.png');
- height:100vh;
- width:100vw;
- background-size:cover;
- position:fixed;
- top:0px;
+.entire-page {
+  background-image: url("landing-Page.png");
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  position: fixed;
+  top: 0px;
 }
 .form-container {
   display: flex;
   justify-content: center;
-  align-items:center;
-  background-size:cover;
+  align-items: center;
+  background-size: cover;
 }
 
 .form-signin {
@@ -159,12 +154,10 @@ export default {
   border-radius: 10px;
   text-align: left;
   color: aliceblue;
-  
 }
 
 #eventLogin {
-
-  background-color:transparent;
+  background-color: transparent;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   text-align: left;
