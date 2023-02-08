@@ -8,7 +8,7 @@ export default {
         return axios.get(`songs/suggested/${eventId}`);
     },
     addSongToSuggested(song, eventId) {
-        return axios.post(`songs/addsong/suggested/${eventId}`, {data: song})
+        return axios.post(`songs/addsong/suggested/${eventId}`, song)
     },
     addSongToPlaylist(eventId, songId) {
         return axios.put(`songs/addsong/${eventId}/${songId}`)
@@ -19,5 +19,8 @@ export default {
     deletePlaylistSong(eventId, songId) {
         return axios.delete(`songs/deleteSong/playlist/${eventId}/${songId}`)
     },
+    searchSong(songName) {
+        return axios.get(`spotify-search/${songName}`)
+    }
 
 }

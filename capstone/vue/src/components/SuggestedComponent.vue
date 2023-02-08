@@ -8,7 +8,7 @@
           <p>{{ song.artist }}</p>
         </div>
         <button @click="addSongToPlaylist(song.songId)">Add Song</button>
-        <button @click="deleteSong">Delete</button>
+        <button @click="deleteSong(song.songId)">Delete</button>
       </li>
     </ul>
   </div>
@@ -32,8 +32,8 @@ export default {
           SongService.addSongToPlaylist(this.currentEventId, songId)
           this.getSuggested();
       },
-      deleteSong() {
-          console.log("bye")
+      deleteSong(songId) {
+          SongService.deleteSuggestedSong(this.currentEventId, songId)
           this.getSuggested();
           
       },
