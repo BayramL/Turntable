@@ -10,8 +10,8 @@ export default {
    getAllEvents() {
        return axios.get('/events/all-events');
     },
-   createEvent(event) {
-       return axios.post('/events/newEvent', event)
+   createEvent(event, dj) {
+       return axios.post(`/events/newEvent/${dj}`, event)
    },
    updateEvent(id, event) {
         return axios.put(`/events/update-event/${id}`, event);
@@ -21,9 +21,6 @@ export default {
    },
  
    //added code below 2/7
-   addEvent(event){
-       return axios.post('/events/newEvent',event);
-   },
    getEventIdFromDj() {
        return axios.get('events/eventId');
    },

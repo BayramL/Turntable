@@ -8,7 +8,7 @@
           <p>{{ song.artist }}</p>
         </div>
         <button @click="playSong(song.songId)">Select</button>
-        <button @click="deleteSong.prevent(song.songId)">Delete</button>
+        <button @click="deleteSong(song.songId)">Delete</button>
       </li>
     </ul>
   </div>
@@ -27,6 +27,10 @@ export default {
   methods: {
     playSong(songId) {
       this.$store.commit("CHANGE_TRACK", songId);
+    },
+    deleteSong(songId) {
+      SongService.deletePlaylistSong(this.currentEventId, songId)
+      this.getPlaylist();
     },
     getPlaylist() {
         EventServices.getEventIdFromDj().then((response) => {

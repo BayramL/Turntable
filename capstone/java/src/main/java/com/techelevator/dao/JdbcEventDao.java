@@ -36,10 +36,10 @@ public class JdbcEventDao implements EventDao {
         return null;
     }
 
-    public void createEvent(User user, Event event) {
-        String sql = "INSERT INTO events(event_name, description, host_id) " +
-                "VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, event.getEventName(), event.getDescription(), user.getId());
+    public void createEvent(User user, Event event, int djId) {
+        String sql = "INSERT INTO events(event_name, description, host_id, dj_id) " +
+                "VALUES (?, ?, ?, ?)";
+        jdbcTemplate.update(sql, event.getEventName(), event.getDescription(), user.getId(), djId);
     }
 
     public void updateEvent(int eventId, Event event) {
