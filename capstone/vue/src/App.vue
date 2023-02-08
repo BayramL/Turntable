@@ -20,6 +20,8 @@
 <style scoped>
 #app {
   background-color: rgba(33, 27, 61, 0.5);
+  height: 100vh;
+  width: 100vw;
 }
 #app > * {
   color: white;
