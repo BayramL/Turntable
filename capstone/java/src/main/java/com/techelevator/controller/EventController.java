@@ -36,10 +36,10 @@ public class EventController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/newEvent", method = RequestMethod.POST)
-    public void createEvent(Principal principal, @RequestBody Event event) {
+    @RequestMapping(path = "/newEvent/{djId}", method = RequestMethod.POST)
+    public void createEvent(Principal principal, @RequestBody Event event, @PathVariable int djId) {
         User user = userDao.findByUsername(principal.getName());
-        eventDao.createEvent(user, event);
+        eventDao.createEvent(user, event, djId);
     }
 
     @RequestMapping(path = "/update-event/{id}", method = RequestMethod.PUT)

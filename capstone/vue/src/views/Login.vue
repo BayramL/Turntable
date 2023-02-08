@@ -114,11 +114,11 @@ export default {
       });
     },
   },
-  mounted: function () {
-    window.setTimeout(() => {
-      this.showLoader = false;
-    }, 2500);
-  },
+  // mounted: function () {
+  //   window.setTimeout(() => {
+  //     this.showLoader = false;
+  //   }, 2500);
+  // },
 };
 </script>
 

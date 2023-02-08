@@ -11,7 +11,7 @@ public interface EventDao {
 
     Event getEventById(int eventId);
 
-    void createEvent(User user, Event event);
+    void createEvent(User user, Event event, int djId);
 
     void updateEvent(int id, Event event);
 

@@ -28,7 +28,7 @@ export default {
                 eventName: ""
             },
            
-            selectedDJ:'',
+            selectedDJ:-1,
             djs:[]
             
         };
@@ -43,12 +43,10 @@ export default {
     methods:{
       
         saveEvent(){
-            let eventWithDj = {...this.event,djId:this.selectedDJ};
-            EventService.addEvent(eventWithDj).then(
+            EventService.createEvent(this.event, this.selectedDJ).then(
                 (response) =>{
+                    console.log("YAYAYAY")
                 if(response.status==201){
-                    console.log(eventWithDj);
-                    console.log(this.djId);
                     alert("success")
                     this.$router.push("/hostEvents");
                     // this.clearForm();
