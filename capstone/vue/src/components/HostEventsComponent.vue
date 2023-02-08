@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     editEvent(id) {
-      this.$router.push({ name: "editEvent", params: { id } });
+      this.$router.push({ name: `editEvent`, params: { id } });
     },
     //added this below 2/7
     addEvent() {

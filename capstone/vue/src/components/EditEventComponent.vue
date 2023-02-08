@@ -3,13 +3,13 @@
     <form>
       <h3> Edit Event</h3>
       <label for="eventTitle"> Event title: </label>
-      <input type ="text" id="eventTitle">
+      <input type ="text" id="eventTitle" v-model="event.eventName">
      
       <label for="eventDescription">Event Description:</label>
-      <textarea id="eventDescription"></textarea>
+      <textarea id="eventDescription" v-model="event.description"></textarea>
     <div class="buttons">
-      <button v-on:click.prevent="saveEvent">Save</button>
-      <button @click="addHost">Add Host</button>
+      <button v-on:click.prevent="saveEvent" >Save</button>
+ 
     </div>
   
     </form>
@@ -21,27 +21,29 @@ import EventService from "../services/EventService";
 export default {
   data() {
     return {
-        events: []
+          event: {
+                description: "",
+                eventName: ""
+            },
+            eventNumber:-1
+
+        
     };
   },
 
   methods: {
     saveEvent() {
-      EventService.updateEvent(this.event).then((response) => {
-        if (response.status === 201) {
+      EventService.updateEvent(this.eventNumber,this.event).then((response) => {
+        if (response.status === 200) {
           this.$router.push({ name: "hostEvents" });
         }
       });
     }
   },
-
-  created() {
-    EventService.updateEvent(this.eventId, this.event).then((response) => {
-      if(response.status === 201) {
-          this.$router.push({name: 'hostEvents'});
-      }
-    });
-  },
+  created(){
+    this.eventNumber = this.$route.params.id
+  }
+ 
   
     
 
