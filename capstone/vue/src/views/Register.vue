@@ -156,8 +156,7 @@ select {
   padding: 30px;
   background-color: rgba(33, 27, 61, 0.5);
   border-radius: 10px;
-  box-shadow: 0px 0px 10px #ccc;
-}
+  box-shadow: 0px 0px 10px rgb(255, 228, 251);}
 
 .form-control {
   width: 100%;
@@ -184,7 +183,7 @@ button[type="submit"] {
   padding: 10px;
   border-radius: 5px;
   border: none;
-  background-color: rgba(33, 27, 61, 0.5);
+  background-color: rgba(176, 6, 182, 0.8);
   color: #fff;
   cursor: pointer;
 }

@@ -17,3 +17,11 @@ li {
   padding-left: 20px;
   border: 1px solid black;
 }
+
+.loader {
+  margin: 0 auto;
+  width: 200px;
+}
+.loader img {
+  max-width: 100%;
+}
