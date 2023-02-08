@@ -48,9 +48,9 @@
 
 
 
-  <div id="eventLogin">
+  <div class="event-signin">
     <form>
-      <label for="eventID" >Event number:</label>
+      <label for="eventID" >Event number: </label>
       <input 
       type ="number"
       id="guestLogin"
@@ -131,44 +131,63 @@ export default {
 </script>
 
 <style>
-.logo{
-  margin-top:10px;
-  margin-left:10px;
-  width:350px;
-}
-.entire-page{
- background-image:url('landing-Page.png');
- height:100vh;
- width:100vw;
- background-size:cover;
- position:fixed;
- top:0px;
-}
-.form-container {
-  display: flex;
-  justify-content: center;
-  align-items:center;
-  background-size:cover;
-}
+.entire-page {
+    background-image: url('landing-Page.png');
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    position: fixed;
+    top: 0px;
+  }
 
-.form-signin {
-  width: 45%;
-  padding: 10px;
-  background-color: transparent;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  text-align: left;
-  color: aliceblue;
-  
-}
+  .logo {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 350px;
+  }
 
-#eventLogin {
+  .form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1080px;
+    max-width: 100%;
+    margin: 20px auto;
+  }
 
-  background-color:transparent;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  text-align: left;
-  padding-left: 15px;
-  margin: 10px;
-}
+  .form-signin, .event-signin {
+    width: 500px;
+    padding: 30px;
+    background-color: rgba(33, 27, 61, 0.5);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgb(255, 228, 251);
+    text-align: left;
+    color: aliceblue;
+    margin: 20px;
+  }
+
+  select, .form-control {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 5px #ccc;
+    background-color: #fff;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(176, 6, 182, 0.85);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: rgba(33, 27, 61);
+  }
 </style>
