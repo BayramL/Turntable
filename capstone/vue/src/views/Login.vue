@@ -1,7 +1,4 @@
 <template>
-<div class="entire-page">
-  <!-- Found out that assets is for IMAGES to pull from ¯\_(ツ)_/¯ go figure-->
-  <img src="@/assets/turntableLogo.png" class="logo"/>
 
 
 <div class="form-container">
@@ -62,9 +59,7 @@
       > Go to event</button>
     </form>
   </div>
-
-</div>
-</div>
+  
 </template>
 
 <script>
@@ -73,60 +68,56 @@ import EventService from "../services/EventService";
 export default {
   name: "login",
   components: {},
+
   data() {
     return {
-      idNumber:"",
+      showLoader: true,
+      idNumber: "",
       user: {
         username: "",
-        password: ""
+        password: "",
       },
-      invalidCredentials: false
+      invalidCredentials: false,
     };
   },
   methods: {
     login() {
       authService
         .login(this.user)
-        .then(response => {
+        .then((response) => {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
             // this.$router.push("/hostEvents");
-             if(response.data.user.role === 'ROLE_DJ'){
-               this.$router.push("/djEvents");
-            }
-             else if(response.data.user.role==='ROLE_HOST'){
+            if (response.data.user.role === "ROLE_DJ") {
+              this.$router.push("/djEvents");
+            } else if (response.data.user.role === "ROLE_HOST") {
               this.$router.push("/hostEvents");
             }
-        
           }
         })
-        .catch(error => {
+        .catch((error) => {
           const response = error.response;
 
           if (response.status === 401) {
             this.invalidCredentials = true;
           }
         });
-
     },
-    goToPage(){
-
-      
-       
-       EventService.getEvent(this.idNumber).then(
-          (response) =>{
-            console.log("molly")
-             if (response.status === 200 && response.data.length !== 0) {
-               this.$router.push({path:`/events/${this.idNumber}`});
-             }
-         
-          }
-      );
-     }
-
-
-  }
+    goToPage() {
+      EventService.getEvent(this.idNumber).then((response) => {
+        console.log("molly");
+        if (response.status === 200 && response.data.length !== 0) {
+          this.$router.push({ path: `/events/${this.idNumber}` });
+        }
+      });
+    },
+  },
+  mounted: function () {
+    window.setTimeout(() => {
+      this.showLoader = false;
+    }, 2500);
+  },
 };
 </script>
 
