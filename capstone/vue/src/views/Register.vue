@@ -1,16 +1,15 @@
 <template>
   <div class="container">
     <div id="register" class="text-center">
+
       <div class="about-section">
-        <div class="about-logo">
-          <!-- <img v-bind:src="require('../assets/turntableLogo-v2.png')" /> -->
-        </div>
+        
         <div class="about-text">
           <h2>About</h2>
           <p>
             Welcome The TurnTable Show, We got Dj Big B From New York, WE got Dj
             Emoney Also from The Empire State and We got the BigMollyMo in the
-            build shes throw up the Big P in the air, Shes represent Pittsburgh
+            build shes throw up the Big P in the air, Shes represent Pittsburgh. Moussa 
           </p>
         </div>
       </div>
@@ -127,19 +126,21 @@ select {
   max-width: 100%;
   margin: 0px auto;
 }
-.about-section img {
+/* .about-section img {
   max-width: 100%;
-}
+} */
 .about-section {
-  padding: 20px;
-
+  padding: 30px;
   flex: 1;
-  padding: 20px;
-  width: 300px;
+  width: 350px;
   margin-right: 40px;
-  padding: 20px;
-  align-items: flex-end;
-  justify-content: center;
+  /* align-items: flex-end;
+  justify-content: center; */
+  background-color: rgba(33, 27, 61, 0.7);
+  border-radius: 25px;
+  box-shadow: 0px 0px 10px rgb(255, 228, 251);
+
+
 }
 
 #register {
