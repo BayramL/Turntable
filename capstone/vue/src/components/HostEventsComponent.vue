@@ -60,11 +60,7 @@ export default {
           }
         });
     },
-    // getEvents() {
-    //   EventService.getAllEvents().then((response) => {
-    //     this.$store.commit("SET_EVENTS", response.data);
-    //   });
-    // },
+
     populateEvents() {
       EventService.getAllEvents().then((response) => {
       this.events = response.data;
