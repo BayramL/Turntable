@@ -3,7 +3,7 @@
     <div id="register" class="text-center">
       <div class="about-section">
         <div class="about-logo">
-          <img v-bind:src="require('../assets/turntableLogo-v2.png')" />
+          <!-- <img v-bind:src="require('../assets/turntableLogo-v2.png')" /> -->
         </div>
         <div class="about-text">
           <h2>About</h2>
@@ -147,7 +147,7 @@ select {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .form-register {

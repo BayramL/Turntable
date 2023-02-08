@@ -1,8 +1,6 @@
 <template>
 
-
 <div class="form-container">
-
 
   <div id="login" class="text-center">
 
@@ -68,7 +66,9 @@ import authService from "../services/AuthService";
 import EventService from "../services/EventService";
 export default {
   name: "login",
-  components: {},
+  components: {
+    
+  },
 
   data() {
     return {
@@ -132,11 +132,6 @@ export default {
     top: 0px;
   }
 
-  .logo {
-    margin-top: 10px;
-    margin-left: 10px;
-    width: 350px;
-  }
 
   .form-container {
     display: flex;
