@@ -22,7 +22,7 @@ CREATE TABLE events (
 );
 
 CREATE TABLE songs (
-    song_id varchar(30) NOT NULL UNIQUE,
+    song_id varchar(30) NOT NULL,
     name varchar(50),
     artist varchar(30),
     picture varchar(100),

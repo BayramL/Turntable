@@ -15,7 +15,8 @@ export default {
     computed: {
         trackUrl() {
             return `https://open.spotify.com/embed/track/${this.$store.state.currentTrack}?utm_source=generator&theme=0`;
-        }
+        },
+        
     }
 };
 </script>

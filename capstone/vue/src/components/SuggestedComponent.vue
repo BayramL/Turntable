@@ -7,7 +7,7 @@
           <p>{{ song.name }}</p>
           <p>{{ song.artist }}</p>
         </div>
-        <button @click="addSong">Add Song</button>
+        <button @click="addSongToPlaylist(song.songId)">Add Song</button>
         <button @click="deleteSong">Delete</button>
       </li>
     </ul>
@@ -25,9 +25,22 @@ export default {
     }
   },
   created() {
-    EventServices.getEventIdFromDj().then((response) => {
-      this.currentEventId = response.data;
-      SongService.getSuggested(this.currentEventId)
+    this.getSuggested();
+  },
+  methods: {
+      addSongToPlaylist(songId) {
+          SongService.addSongToPlaylist(this.currentEventId, songId)
+          this.getSuggested();
+      },
+      deleteSong() {
+          console.log("bye")
+          this.getSuggested();
+          
+      },
+      getSuggested() {
+        EventServices.getEventIdFromDj().then((response) => {
+        this.currentEventId = response.data;
+        SongService.getSuggested(this.currentEventId)
         .then(response => {
           this.songs = response.data;
         })
@@ -35,14 +48,7 @@ export default {
           console.error(error);
         });
     });
-  },
-  method: {
-      addSong() {
-          console.log("hi");
-      },
-      deleteSong() {
-          console.log("bye");
-      }
+    }
   }
   
 }
