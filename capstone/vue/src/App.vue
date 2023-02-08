@@ -3,8 +3,10 @@
     id="everything"
     v-bind:style="`background-image:url(${require('./views/landing-Page.png')})`"
   >
+
     <div id="app">
-      <div id="nav">
+      <div id="nav"> 
+    
         <router-link v-bind:to="{ name: 'home' }">Home</router-link
         >&nbsp;|&nbsp;
         <router-link
@@ -13,11 +15,15 @@
           >Logout</router-link
         >
       </div>
+
       <router-view />
     </div>
   </div>
 </template>
-<style scoped>
+
+
+
+<style>
 #app {
   background-color: rgba(33, 27, 61, 0.5);
   height: 100vh;

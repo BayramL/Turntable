@@ -1,6 +1,6 @@
 <template>
   <div class="upcomingEvents">
-    <loading-gif></loading-gif>
+    <!-- <loading-gif></loading-gif> -->
     <ul v-for="event in events" :key="event.id">
       <div class="eventDiv">
         <li>{{ event.eventName }}</li>
@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import LoadingGif from '../components/LoadingGif.vue';
+// import LoadingGif from '../components/LoadingGif.vue';
 import EventService from "../services/EventService";
 export default {
-  components: { LoadingGif },
+  // components: { LoadingGif },
 
   name: "host-events-component",
   data() {

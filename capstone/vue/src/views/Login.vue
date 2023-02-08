@@ -1,8 +1,7 @@
 <template>
 
-
 <div class="form-container">
-
+    <header-component> </header-component>
 
   <div id="login" class="text-center">
 
@@ -66,9 +65,12 @@
 <script>
 import authService from "../services/AuthService";
 import EventService from "../services/EventService";
+import HeaderComponent from "../components/HeaderComponent.vue"
 export default {
   name: "login",
-  components: {},
+  components: {
+    HeaderComponent
+  },
 
   data() {
     return {
