@@ -11,6 +11,7 @@
       <button v-on:click.prevent="saveEvent">Save</button>
       <button @click="addHost">Add Host</button>
     </div>
+  
     </form>
   </div>
 </template>
@@ -40,7 +41,7 @@ export default {
           this.$router.push({name: 'hostEvents'});
       }
     });
-  },//stuff i worked on 2/7 from line 44-56
+  },
   
     
 

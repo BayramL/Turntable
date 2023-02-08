@@ -7,8 +7,15 @@
           <textarea placeholder="eventDescription" v-model="event.description"></textarea>
           <button v-on:click.prevent="saveEvent">Save</button>
           <!-- <button v-on:click="goBack">Go Back</button> -->
+            <select v-model="selectedDJ">
+        <option disabled value="">Select a DJ</option>
+         <option v-for="dj in djs" :key="dj" :value="dj.id">{{dj.username}}</option>
+      </select>
       </form>
       <!-- <div v-if="error">{{error}}</div> -->
+        <div>
+    
+    </div>
   </div>
 </template>
 <script>
@@ -19,17 +26,29 @@ export default {
             event: {
                 description: "",
                 eventName: ""
-            }
+            },
+           
+            selectedDJ:'',
+            djs:[]
+            
         };
     },
+    created(){
+        EventService.getDjs()
+        .then(response =>{
+            this.djs = response.data;
+        })
+        
+    },
     methods:{
-        // goback(){
-        //     this.$router.go(-1)
-        // },
+      
         saveEvent(){
-            EventService.addEvent(this.event).then(
+            let eventWithDj = {...this.event,djId:this.selectedDJ};
+            EventService.addEvent(eventWithDj).then(
                 (response) =>{
                 if(response.status==201){
+                    console.log(eventWithDj);
+                    console.log(this.djId);
                     alert("success")
                     this.$router.push("/hostEvents");
                     // this.clearForm();
@@ -43,7 +62,8 @@ export default {
         clearForm(){
             this.eventTitle = "";
             this.eventDescription = "";
-        }
+        },
+      
     }
 }
 </script>

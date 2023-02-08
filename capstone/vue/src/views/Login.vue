@@ -78,7 +78,7 @@ export default {
       idNumber:"",
       user: {
         username: "",
-        password: ""
+        password: "",
       },
       invalidCredentials: false
     };

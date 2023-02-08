@@ -26,6 +26,9 @@ export default {
    },
    getEventIdFromDj() {
        return axios.get('events/eventId');
+   },
+   getDjs(){
+       return axios.get('users/djs')
    }
 
 }
