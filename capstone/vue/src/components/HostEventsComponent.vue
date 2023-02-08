@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     editEvent(id) {
-      this.$router.push({ name: "editEvent", params: { id } });
+      this.$router.push({ name: `editEvent`, params: { id } });
     },
     //added this below 2/7
     addEvent() {
@@ -60,11 +60,7 @@ export default {
           }
         });
     },
-    // getEvents() {
-    //   EventService.getAllEvents().then((response) => {
-    //     this.$store.commit("SET_EVENTS", response.data);
-    //   });
-    // },
+
     populateEvents() {
       EventService.getAllEvents().then((response) => {
       this.events = response.data;

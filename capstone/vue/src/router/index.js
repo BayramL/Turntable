@@ -75,7 +75,7 @@ const router = new Router({
       }
     },
     {
-      path: "/events/editEvent",
+      path: "/events/editEvent/:id",
       name: "editEvent",
       component: EditEventComponent,
       meta: {
