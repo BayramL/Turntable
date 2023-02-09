@@ -21,7 +21,8 @@ export default new Vuex.Store({
     events: [],
     token: currentToken || '',
     user: currentUser || {},
-    currentTrack: ""
+    currentTrack: "",
+    songSearchResult : {}
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {

@@ -29,8 +29,15 @@ export default {
   },
   methods: {
       addSongToPlaylist(songId) {
-          SongService.addSongToPlaylist(this.currentEventId, songId)
-          this.getSuggested();
+          //TODO: call this.getSuggested only after promise is resolved.
+          SongService.addSongToPlaylist(this.currentEventId, songId).then(
+            (response) => {
+              if (response.status == 200) {
+                this.getSuggested();
+              }
+            }
+          )
+          
       },
       deleteSong(songId) {
           SongService.deleteSuggestedSong(this.currentEventId, songId)
@@ -47,6 +54,7 @@ export default {
         .catch(error => {
           console.error(error);
         });
+        
     });
     }
   }

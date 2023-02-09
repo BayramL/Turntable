@@ -12,15 +12,18 @@
         </ul>
     </div>
   <div class="song-search">
+      <div>
+        <h2> {{currentEventName}} </h2>
+      </div>
       <div class="search-full-container">
-      <div class="search-container">
         <input type="text" v-model="searchQuery">
         <button @click="searchSong">Search</button>
+        <div class="dont-show" v-if="showControls">
+          <p>Song Name: {{ name }}</p>
+          <p>Song Artist: {{ artist }}</p>
+          <img :src="picture" alt="Song picture">
+          <button @click="addSong">Add Song</button>
         </div>
-        <p>Song Name: {{ name }}</p>
-        <p>Song Artist: {{ artist }}</p>
-        <img :src="picture" alt="Song picture">
-        <button @click="addSong">Add Song</button>
       </div>
   </div>
   <div class="suggested">
@@ -40,18 +43,28 @@
 </template>
 
 <script>
+import EventService from '../services/EventService'
 import SongService from '../services/SongService'
 export default {
+  computed: {
+      showControls() {
+        if (this.songId != "") {
+          return true;
+        }
+        return false;
+      }
+  },
     data() {
         return {
             songs: [],
             suggestedSongs: [],
             currentEventId: -1,
             searchQuery: '',
-            songId: null,
-            name: null,
-            artist: null,
-            picture: null,
+            songId: "",
+            name: "",
+            artist: "",
+            picture: "",
+            currentEventName: "RANDOM"
         }
     },
     methods: {
@@ -96,11 +109,16 @@ export default {
           console.log('Song added successfully!');
         });
         this.getSuggested();
+        this.getPlaylist();
     }
   },
   created() {
     this.getPlaylist();
     this.getSuggested();
+    EventService.getEvent(this.$route.params.id).then((response) => {
+      console.log(response)
+      this.currentEventName = response.data.eventName;
+    });
   },
 }
 </script>
