@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li v-for="song in songs" :key="song.id">
+      <li v-for="song in songs" :key="song.id" class="song-list">
         <img :src="song.picture" alt="album cover" class="albumImage">
         <div class="song-details">
           <p>{{ song.name }}</p>
@@ -64,14 +64,13 @@ button {
   font-size: 15px;
 }
 
-li {
+.song-list {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
   background-color: rgba(33, 27, 61, 0.5);
-  border-radius: 10px;
-  padding-left: 20px;
-  border: 1px solid black;
+  border-radius: 50px;
+  padding: 20px;
 }
 
 .albumImage {

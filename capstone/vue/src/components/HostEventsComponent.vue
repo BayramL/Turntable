@@ -1,45 +1,52 @@
 <template>
-<loader-layout>
-  <div class="upcomingEvents">
-    <div class="user-avatar">
+  <loader-layout>
+    <div>
+      <div class="user-avatar">
         <div class="user-avatar-image"></div>
-        <p> Welcome to the party, {{appUser.username}}!!!</p>
+        <p>Welcome to the party, {{ appUser.username }}!</p>
       </div>
-       
-    <ul v-for="event in events" :key="event.id">
 
-      <div class="eventDiv">
-        <li>{{ event.eventName }}</li>
+      <div class="upcoming-events">
+        <ul v-for="event in events" :key="event.id">
+          
+          <div class="eventDiv">
+            <li class="event-items-list">{{ event.eventName }}</li>
 
-        <button v-on:click.prevent="editEvent(event.eventId)">edit</button>
+            <button v-on:click.prevent="editEvent(event.eventId)">edit</button>
 
-        <button v-on:click.prevent="removeEvent(event.eventId)">delete</button>
-  
+            <button v-on:click.prevent="removeEvent(event.eventId)">
+              delete
+            </button>
+          </div>
+        </ul>
       </div>
-    </ul>
-
-    
-    <!-- added this button below 2/7
+      <!-- added this button below 2/7
         addEventComponent is basically inside this so if you add hostevents component
         it also includes addEventComponent. We can remove this.
       -->
+      <div class="add-party">
+      <button v-on:click.prevent="addEvent" type="submit">
+        Add a party!
+      </button>
+      </div>
 
-     <button v-on:click.prevent="addEvent" type="submit">Add a party!</button>
-  </div>  </loader-layout>
+    </div>
+
+  </loader-layout>
 </template>
 
 <script>
 import EventService from "../services/EventService";
-import LoaderLayout from '../layout/LoaderLayout.vue';
+import LoaderLayout from "../layout/LoaderLayout.vue";
 export default {
-  components: {  LoaderLayout },
+  components: { LoaderLayout },
 
   name: "host-events-component",
 
   data() {
     return {
       events: [],
-      appUser: '',
+      appUser: "",
     };
   },
   created() {
@@ -47,20 +54,18 @@ export default {
     this.isLoading = false;
   },
   mounted: function () {
-    const user = JSON.parse(window.localStorage.getItem('user'));
-    this.appUser = user; 
-    },
+    const user = JSON.parse(window.localStorage.getItem("user"));
+    this.appUser = user;
+  },
   methods: {
     editEvent(id) {
       this.$router.push({ name: `editEvent`, params: { id } });
     },
-    // added this below 2/7
     addEvent() {
       this.$router.push({ name: "addEvent" });
     },
     removeEvent(eventId) {
-      EventService
-        .deleteEvent(eventId)
+      EventService.deleteEvent(eventId)
         .then((response) => {
           if (response.status === 200) {
             this.populateEvents();
@@ -77,18 +82,20 @@ export default {
 
     populateEvents() {
       EventService.getAllEvents().then((response) => {
-      this.events = response.data;
-    });
-    }
+        this.events = response.data;
+      });
+    },
   },
 };
-
 </script>
 
-<style>
-.eventDiv {
-  background-color: rgba(33, 27, 61, 0.5);
+<style scoped>
+div.upcoming-events {
+  margin: 50px auto;
   width: 75%;
+}
+.eventDiv {
+  background-color: rgba(33, 27, 61, 0.7);
   display: flex;
   justify-content: space-between;
   border-radius: 50px;
@@ -100,21 +107,22 @@ export default {
 li {
   text-align: center;
   list-style-type: none;
+  border: 0px;
 }
 
-.user-avatar{
+.user-avatar {
   position: absolute;
-  right: 25px; 
+  right: 25px;
   top: 50px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 400px;
+  width: 500px;
+  font-weight: bolder;
 }
-/* .user-avatar-image {
-  
-  height: 50px;
-  width: 100px;
-  
-} */
+
+.add-party {
+  width: 175px;
+  margin: 20px auto;
+}
 </style>

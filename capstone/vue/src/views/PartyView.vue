@@ -1,4 +1,5 @@
 <template>
+<loader-layout> 
 <div class="container">
     <div class="playlist">
         <ul>
@@ -40,11 +41,14 @@
   </div>
   
 </div>
+</loader-layout>
 </template>
 
 <script>
 import EventService from '../services/EventService'
 import SongService from '../services/SongService'
+import LoaderLayout from '../layout/LoaderLayout.vue';
+
 export default {
   computed: {
       showControls() {
@@ -54,6 +58,7 @@ export default {
         return false;
       }
   },
+  components: { LoaderLayout },
     data() {
         return {
             songs: [],
@@ -128,22 +133,24 @@ export default {
     display: flex;
     justify-content:space-evenly;
     align-content: center;
+    margin-top: 50px;
 }
 
 li {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
-  background-color: rgba(33, 27, 61, 0.5);
-  border-radius: 10px;
-  padding-left: 20px;
-  border: 1px solid black;
+  margin-bottom: 15px;
+  background-color: rgba(33, 27, 61, 0.7);
+  border-radius: 50px;
+  padding: 7px 5px 7px 20px;
+  border: 0px;
 }
 
 .albumImage {
   width: 50px;
   height: 50px;
   margin-right: 20px;
+  border-radius: 10px;
 }
 
 .song-details {
@@ -168,14 +175,14 @@ li {
 }
 
 .picture img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
+  width: 50px;
+  height: 50px;
+  /* object-fit: cover; */
   margin-bottom: 10px;
 }
 
 .search-full-container {
-    display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
