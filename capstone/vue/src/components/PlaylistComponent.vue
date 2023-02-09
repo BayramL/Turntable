@@ -33,7 +33,7 @@ export default {
       this.getPlaylist();
     },
     getPlaylist() {
-        EventServices.getEventIdFromDj().then((response) => {
+      EventServices.getEventIdFromDj().then((response) => {
       this.currentEventId = response.data;
       SongService.getPlaylist(this.currentEventId)
         .then(response => {

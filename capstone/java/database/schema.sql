@@ -33,6 +33,7 @@ CREATE TABLE event_songs (
     song_id varchar(50) NOT NULL,
     event_id int NOT NULL,
     suggested varchar(20),
+    likes int DEFAULT 0,
     CONSTRAINT PK_song_event PRIMARY KEY(song_id, event_id),
     CONSTRAINT FK_event_song_song_id FOREIGN KEY(song_id) REFERENCES songs(song_id),
     CONSTRAINT FK_event_song_event_id FOREIGN KEY(event_id) REFERENCES events(event_id)

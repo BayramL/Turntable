@@ -17,4 +17,10 @@ public interface SongDao {
     void deletePlaylistSong(String songId, int eventId);
 
     void deleteSuggestedSong(String songId, int eventId);
+
+    int getNumberOfLikes(String songId, int eventId);
+
+    void incrementLikes(String songId, int eventId);
+
+    void decrementLikes(String songId, int eventId);
 }

@@ -64,6 +64,27 @@ public class JdbcSongDao implements SongDao {
         jdbcTemplate.update(sql, songId, eventId);
     }
 
+    public int getNumberOfLikes(String songId, int eventId) {
+        String sql = "SELECT * FROM event_songs WHERE song_id = ? AND event_id = ? AND suggested = 'suggested'";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, songId, eventId);
+        if (results.next()) {
+            return results.getInt("likes");
+        }
+        return -1;
+    }
+
+    public void incrementLikes(String songId, int eventId) {
+        String sql = "UPDATE event_songs SET likes = likes + 1 WHERE song_id = ? AND event_id = ? AND suggested = 'suggested'";
+        jdbcTemplate.update(sql, songId, eventId);
+    }
+
+    public void decrementLikes(String songId, int eventId) {
+        String sql = "UPDATE event_songs SET likes = likes - 1 WHERE song_id = ? AND event_id = ? AND suggested = 'suggested'";
+        jdbcTemplate.update(sql, songId, eventId);
+    }
+
+
+
     public Song mapToSongSet(SqlRowSet results) {
         Song song = new Song();
         song.setSongId(results.getString("song_id"));
