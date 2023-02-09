@@ -1,4 +1,5 @@
 <template>
+<loader-layout>
   <div class="container">
     <div id="register" class="text-center">
 
@@ -64,11 +65,14 @@
       </form>
     </div>
   </div>
+  </loader-layout>
 </template>
 
 <script>
+import LoaderLayout from '../layout/LoaderLayout.vue';
 import authService from "../services/AuthService";
 export default {
+  components: { LoaderLayout },
   name: "register",
   data() {
     return {

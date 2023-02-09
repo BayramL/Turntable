@@ -1,7 +1,7 @@
 <template>
 
 <div class="form-container">
-
+   
   <div id="login" class="text-center">
 
     <form class="form-signin" @submit.prevent="login">
@@ -57,8 +57,9 @@
       > Go to event</button>
     </form>
   </div>
-  
+   
   </div>
+
 </template>
 
 <script>
@@ -114,11 +115,6 @@ export default {
       });
     },
   },
-  // mounted: function () {
-  //   window.setTimeout(() => {
-  //     this.showLoader = false;
-  //   }, 2500);
-  // },
 };
 </script>
 
@@ -131,7 +127,6 @@ export default {
     position: fixed;
     top: 0px;
   }
-
 
   .form-container {
     display: flex;
