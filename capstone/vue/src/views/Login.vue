@@ -1,5 +1,5 @@
 <template>
-
+<div class ="centered-images">
 <div class="form-container">
    
   <div id="login" class="text-center">
@@ -59,7 +59,7 @@
   </div>
    
   </div>
-
+</div>
 </template>
 
 <script>
@@ -119,6 +119,13 @@ export default {
 </script>
 
 <style>
+.centered-images{
+  display:flex;
+  align-items: center;
+  /* height:100%; */
+  margin-top: 8%;
+
+}
 .entire-page {
     background-image: url('landing-Page.png');
     height: 100vh;
@@ -129,12 +136,13 @@ export default {
   }
 
   .form-container {
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1080px;
+    width: 1000px;
     max-width: 100%;
-    margin: 20px auto;
+    margin: auto auto;
   }
 
   .form-signin, .event-signin {
