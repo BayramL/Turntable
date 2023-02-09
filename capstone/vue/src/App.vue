@@ -6,9 +6,10 @@
   
     <div id="app">
       <div id="nav" class ="logo">
-        <router-link 
+        <!-- <router-link 
         v-bind:to="{name: 'login'}"
-        > <img src="../src/assets/turntableLogo-v2.png" alt ="turntable logo" class ="turntable-logo"/> </router-link>
+        > 
+        <img src="../src/assets/turntableLogo-v2.png" alt ="turntable logo" class ="turntable-logo"/> </router-link> -->
 
 
         <router-link
