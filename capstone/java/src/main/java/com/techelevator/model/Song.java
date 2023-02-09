@@ -5,6 +5,7 @@ public class Song {
     private String name;
     private String artist;
     private String picture;
+    private int likes;
 
     public Song() {
 
@@ -47,5 +48,13 @@ public class Song {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 }
