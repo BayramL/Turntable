@@ -1,12 +1,18 @@
 <template>
   <div class="container">
+
       <div class="search-container">
         <input type="text" v-model="searchQuery">
         <button @click="searchSong">Search</button>
       </div>
+
     <p>Song Name: {{ name }}</p>
     <p>Song Artist: {{ artist }}</p>
+
+    <div id="search-img">
     <img :src="picture" alt="Song picture">
+    </div>
+
     <button @click="addSong">Add Song</button>
   </div>
 </template>
@@ -52,6 +58,9 @@ export default {
 </script>
 
 <style scoped>
+/* button {
+
+} */
 .container {
   display: flex;
   flex-direction: column;
@@ -78,7 +87,14 @@ export default {
 .picture img {
   width: 200px;
   height: 200px;
-  object-fit: cover;
+  /* object-fit: cover; */
   margin-bottom: 10px;
 }
+
+#search-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
 </style>

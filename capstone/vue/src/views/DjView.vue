@@ -1,9 +1,11 @@
 <template>
+<loader-layout> 
   <div class="container">
     <playlist-component class="left"/>
     <spotify-embed class="middle"/>
     <suggested-component class="right" />
   </div>
+  </loader-layout>
 </template>
 
 <script>

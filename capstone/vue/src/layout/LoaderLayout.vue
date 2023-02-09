@@ -8,13 +8,24 @@
         <div class="user-avatar-image"></div>
         <p>{{appUser.username}}</p>
       </div> -->
+      
     </header>
 
     <main>
       <slot v-if="showLoader === false" />
       <loading-gif v-if="showLoader === true"> </loading-gif>
     </main>
-    <footer> </footer>
+
+    <footer>  
+      <div class="logout-link">
+      <router-link
+          v-bind:to="{ name: 'logout' }"
+          v-if="$store.state.token != ''">
+          Logout
+        </router-link>
+      </div> 
+    </footer>
+
   </div>
 </template>
 
@@ -36,24 +47,12 @@ export default {
 
     window.setTimeout(() => {
       this.showLoader = false;
-    }, 2500);
+    }, 1000);
   },
 };
 </script>
 <style>
-/* .user-avatar{
-  position: absolute;
-  right: 25px; 
-  top: 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100px;
+.logout-link{
+  text-align: center;
 }
-.user-avatar-image {
-  background-color: white;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-} */
 </style>

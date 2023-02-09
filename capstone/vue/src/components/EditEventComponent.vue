@@ -1,24 +1,33 @@
 <template>
+  <loader-layout> 
   <div>
-    <form>
+    <form class="edit-event-form">
       <h3> Edit Event</h3>
+
       <label for="eventTitle"> Event title: </label>
       <input type ="text" id="eventTitle" v-model="event.eventName">
      
       <label for="eventDescription">Event Description:</label>
       <textarea id="eventDescription" v-model="event.description"></textarea>
+
+
     <div class="buttons">
       <button v-on:click.prevent="saveEvent" >Save</button>
- 
     </div>
   
     </form>
+    
   </div>
+  </loader-layout>
 </template>
 
 <script>
+import LoaderLayout from '../layout/LoaderLayout.vue';
 import EventService from "../services/EventService";
+
 export default {
+ components: { LoaderLayout },
+
   data() {
     return {
           event: {
@@ -51,15 +60,17 @@ export default {
 </script>
 
 <style>
-.edit-event {
+.edit-event-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 70%;
+  margin: 0 auto;
 }
 
 label {
   margin: 10px 0;
-}
+  }
 
 input,
 textarea {
@@ -67,15 +78,17 @@ textarea {
   padding: 10px;
   margin: 10px 0;
   border: 1px solid gray;
-  border-radius: 5px;
+  border-radius: 25px;
+  box-shadow: 0px 0px 10px rgb(255, 228, 251);
+
 }
 
-.buttons {
+/* .buttons {
   display: flex;
   justify-content: space-around;
   width: 50%;
   margin-top: 20px;
-}
+} */
 
 button {
   padding: 10px 20px;

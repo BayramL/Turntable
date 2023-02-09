@@ -1,6 +1,9 @@
 <template>
+<div>
   <div>
    <img src="src\assets\turntableLogo.png" alt="logo">    
+  </div>
+
   </div>
 </template>
 

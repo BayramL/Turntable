@@ -11,12 +11,6 @@
         > 
         <img src="../src/assets/turntableLogo-v2.png" alt ="turntable logo" class ="turntable-logo"/> </router-link>
 
-
-        <router-link
-          v-bind:to="{ name: 'logout' }"
-          v-if="$store.state.token != ''"
-          >Logout</router-link
-        >
       </div>
 
       <router-view />
