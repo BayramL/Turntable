@@ -2,7 +2,7 @@
 
   <div>
     <header>
-      <img src="../assets/turntableLogo-v2.png" alt ="turntable logo" class ="turntable-logo"/>
+      <!-- <img src="../assets/turntableLogo-v2.png" alt ="turntable logo" class ="turntable-logo"/> -->
     
       <!-- <div class="user-avatar">
         <div class="user-avatar-image"></div>
