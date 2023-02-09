@@ -53,8 +53,6 @@
         />
 
         <router-link :to="{ name: 'login' }">Have an account?</router-link>
-
-        <img id="password-strength" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Vespa_PX_200_Millennium_2003.jpg/220px-Vespa_PX_200_Millennium_2003.jpg">
         
         <button class="btn btn-lg btn-primary btn-block" type="submit">
           Create Account
@@ -89,20 +87,7 @@ export default {
       registrationErrorMsg: "There were problems registering this user.",
     };
   },
-   mounted(){
-     console.log("testing to see if it hits")
-   const password = document.getElementById('password')
-   const passwordStrength = document.getElementById('password-strength')
-
-  password.addEventListener('input', (e) => {
-  const input = e.target.value
-  const length = input.length
-  let blurValue = 5
-  if (length >= 8) {
-    blurValue = 0
-  }
-  passwordStrength.style.filter = `blur(${blurValue}px)`
-})},
+   
   methods: {
     
     register() {
@@ -139,9 +124,7 @@ export default {
 </script>
 
 <style scoped>
-#password-strength{
-  filter:blur(5px);
-}
+
 select {
   color: black;
 }

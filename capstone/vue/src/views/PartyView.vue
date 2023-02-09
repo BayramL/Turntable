@@ -31,7 +31,7 @@
           <p>{{ song.name }}</p>
           <p>{{ song.artist }}</p>
         </div>
-        <button v-bind:class="{ 'highlighted': highlighted }" @click="highlighted = !highlighted">
+        <button v-bind:class="{ 'highlighted': highlighted }" @click="highlighted = !highlighted"> </button>
       </li>
     </ul>
   </div>
