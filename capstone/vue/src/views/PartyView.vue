@@ -22,7 +22,7 @@
         <div class="dont-show" v-if="showControls">
           <p>Song Name: {{ name }}</p>
           <p>Song Artist: {{ artist }}</p>
-          <img :src="picture" alt="Song picture">
+          <img :src="picture" alt="Song picture" id="searchImage">
           <button @click="addSong">Add Song</button>
         </div>
       </div>
@@ -35,7 +35,8 @@
           <p>{{ song.name }}</p>
           <p>{{ song.artist }}</p>
         </div>
-        <button v-bind:class="{ 'highlighted': highlighted }" @click="highlighted = !highlighted"> </button>
+        <p>Likes: {{ song.likes }}</p>
+        <button v-on:click="addLike(song.songId)">Like</button>
       </li>
     </ul>
   </div>
@@ -69,7 +70,7 @@ export default {
             name: "",
             artist: "",
             picture: "",
-            currentEventName: "RANDOM"
+            currentEventName: "",
         }
     },
     methods: {
@@ -115,7 +116,12 @@ export default {
         });
         this.getSuggested();
         this.getPlaylist();
-    }
+    },
+    addLike(songId) {
+      SongService.incrementLikes(this.$route.params.id, songId)
+      this.getSuggested();
+      this.getPlaylist();
+    },
   },
   created() {
     this.getPlaylist();
@@ -124,7 +130,12 @@ export default {
       console.log(response)
       this.currentEventName = response.data.eventName;
     });
+    this.interval = setInterval(() => {
+      this.getPlaylist();
+      this.getSuggested();
+    }, 500);
   },
+  
 }
 </script>
 
@@ -185,5 +196,13 @@ li {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#searchImage {
+  height: 333px;
+  width: 333px;
+  border: 1px black solid;
+  align-items: center;
+
 }
 </style>

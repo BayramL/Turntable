@@ -54,17 +54,17 @@ public class SongController {
     }
 
     @RequestMapping(path = "likes/{eventId}/{songId}", method = RequestMethod.GET)
-    public int getLikes(@PathVariable int eventId, String songId) {
+    public int getLikes(@PathVariable int eventId, @PathVariable String songId) {
         return songDao.getNumberOfLikes(songId, eventId);
     }
 
     @RequestMapping(path = "likes/{eventId}/{songId}/increment", method = RequestMethod.PUT)
-    public void incrementLikes(@PathVariable int eventId, String songId) {
+    public void incrementLikes(@PathVariable int eventId, @PathVariable String songId) {
         songDao.incrementLikes(songId, eventId);
     }
 
     @RequestMapping(path = "likes/{eventId}/{songId}/decrement", method = RequestMethod.PUT)
-    public void decrementLikes(@PathVariable int eventId, String songId) {
+    public void decrementLikes(@PathVariable int eventId, @PathVariable String songId) {
         songDao.decrementLikes(songId, eventId);
     }
 

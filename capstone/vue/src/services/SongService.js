@@ -21,6 +21,12 @@ export default {
     },
     searchSong(songName) {
         return axios.get(`spotify-search/${songName}`)
+    },
+    incrementLikes(eventId, songId) {
+        return axios.put(`songs/likes/${eventId}/${songId}/increment`)
+    },
+    getLikes(eventId, songId) {
+        return axios.get(`songs/likes/${eventId}/${songId}`)
     }
 
 }

@@ -10,7 +10,7 @@
     <p>Song Artist: {{ artist }}</p>
 
     <div id="search-img">
-    <img :src="picture" alt="Song picture">
+    <img src="https://i.scdn.co/image/ab67616d0000b273811bfdc4f55b3a7484524aaf" alt="Song picture" id="searchedimg" height="200" width="200">
     </div>
 
     <button @click="addSong">Add Song</button>
@@ -91,9 +91,9 @@ export default {
   margin-bottom: 10px;
 }
 
-#search-img {
-  width: 200px;
-  height: 200px;
+#searchedimg {
+  max-width: 200px;
+  max-height: 200px;
   object-fit: cover;
 }
 
