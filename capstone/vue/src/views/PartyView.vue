@@ -15,6 +15,7 @@
   <div class="song-search">
       <div>
         <h2> {{currentEventName}} </h2>
+        <h3>{{currentEventDescription}}</h3>
       </div>
       <div class="search-full-container">
         <input type="text" v-model="searchQuery">
@@ -70,6 +71,8 @@ export default {
             artist: "",
             picture: "",
             currentEventName: "",
+            currentEventDescription:""
+            
         }
     },
     methods: {
@@ -121,6 +124,7 @@ export default {
       this.getSuggested();
       this.getPlaylist();
     },
+
   },
   created() {
     this.getPlaylist();
@@ -128,6 +132,7 @@ export default {
     EventService.getEvent(this.$route.params.id).then((response) => {
       console.log(response)
       this.currentEventName = response.data.eventName;
+      this.currentEventDescription = response.data.description;
     });
     this.interval = setInterval(() => {
       this.getPlaylist();
