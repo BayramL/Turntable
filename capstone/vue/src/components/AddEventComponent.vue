@@ -9,15 +9,19 @@
         <p> Welcome to the party, {{appUser.username}}!</p>
       </div>
 
-      <form >
-          <input type="text" placeholder="eventTitle" v-model="event.eventName">
-          <textarea placeholder="eventDescription" v-model="event.description"></textarea>
-          <button v-on:click.prevent="saveEvent">Save</button>
+      <form class ="edit-event-form" >
+           <h3> Lets make a party!</h3>
+           <label for="eventTitle"> The name of your party: </label>
+          <input type="text" placeholder="Ex: Spongebob Rave Playlist" v-model="event.eventName">
+          <label for="eventDescription">Event Description:</label>
+          <textarea placeholder="What is your party about?" v-model="event.description"></textarea>         
           <!-- <button v-on:click="goBack">Go Back</button> -->
-            <select v-model="selectedDJ">
+          <label for="eventDropdown">Select a Dj!:</label>
+        <select id="dropdown" v-model="selectedDJ">
         <option disabled value="">Select a DJ</option>
-         <option v-for="dj in djs" :key="dj" :value="dj.id">{{dj.username}}</option>
-      </select>
+        <option v-for="dj in djs" :key="dj" :value="dj.id">{{dj.username}}</option>
+      </select><br>
+      <button id ="button" v-on:click.prevent="saveEvent">Save</button>
       </form>
       <!-- <div v-if="error">{{error}}</div> -->
         <div>
@@ -77,6 +81,13 @@ export default {
 }
 </script>
 <style>
+.edit-event-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin: 0 auto;
+}
 .user-avatar{
   position: absolute;
   right: 25px; 
@@ -86,5 +97,25 @@ export default {
   align-items: center;
   width: 500px;
   font-weight: bolder;
+}
+#dropdown{
+    width:150px;
+}
+input,
+textarea {
+  width: 50%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid gray;
+  border-radius: 25px;
+  box-shadow: 0px 0px 10px rgb(255, 228, 251);
+
+}
+button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  background-color: lightgray;
+  cursor: pointer;
 }
 </style>

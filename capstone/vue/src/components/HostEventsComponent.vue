@@ -12,9 +12,9 @@
           <div class="eventDiv">
             <li class="event-items-list">{{ event.eventName }}</li>
 
-            <button v-on:click.prevent="editEvent(event.eventId)">edit</button>
+            <button class ="editButton" v-on:click.prevent="editEvent(event.eventId)">edit</button>
 
-            <button v-on:click.prevent="removeEvent(event.eventId)">
+            <button class ="deleteButton" v-on:click.prevent="removeEvent(event.eventId)">
               delete
             </button>
           </div>
@@ -24,14 +24,14 @@
         addEventComponent is basically inside this so if you add hostevents component
         it also includes addEventComponent. We can remove this.
       -->
-      <div class="add-party">
+    
+
+    </div>
+  <div class="add-party">
       <button v-on:click.prevent="addEvent" type="submit">
         Add a party!
       </button>
       </div>
-
-    </div>
-
   </loader-layout>
 </template>
 
@@ -121,8 +121,27 @@ li {
   font-weight: bolder;
 }
 
+.eventDiv {
+   display: flex;
+   justify-content: space-between;
+}
+
+.event-items-list {
+   margin-right: auto;
+   margin-top:auto;
+   margin-bottom:auto;
+}
+
+.editButton {
+  margin-left: 10px;
+  width: 175px;
+
+}
+
+
 .add-party {
   width: 175px;
   margin: 20px auto;
 }
+
 </style>

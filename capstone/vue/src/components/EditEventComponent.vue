@@ -9,8 +9,7 @@
      
       <label for="eventDescription">Event Description:</label>
       <textarea id="eventDescription" v-model="event.description"></textarea>
-
-
+      
     <div class="buttons">
       <button v-on:click.prevent="saveEvent" >Save</button>
     </div>
