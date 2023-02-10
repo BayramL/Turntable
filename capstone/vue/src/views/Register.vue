@@ -8,9 +8,7 @@
         <div class="about-text">
           <h2>About</h2>
           <p>
-            Welcome The TurnTable Show, We got Dj Big B From New York, WE got Dj
-            Emoney Also from The Empire State and We got the BigMollyMo in the
-            build shes throw up the Big P in the air, Shes represent Pittsburgh. Moussa 
+            Turntable allows users to attend parties through a code provided by the party host. It gives guests the ability to recommend songs for a shared playlist and vote on the existing ones. The designated DJ will then connect and incorporate those chosen songs into the party playlist. Whether you're in the mood for some classic hits or the latest chart-topping tracks, Turntable is the perfect platform for music lovers to come together and make the party come alive. 
           </p>
         </div>
       </div>

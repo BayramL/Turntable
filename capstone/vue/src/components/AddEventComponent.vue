@@ -16,7 +16,7 @@
           <label for="eventDescription">Event Description:</label>
           <textarea placeholder="What is your party about?" v-model="event.description"></textarea>         
           <!-- <button v-on:click="goBack">Go Back</button> -->
-          <label for="eventDropdown">Select a Dj!:</label>
+          <label for="eventDropdown">Select a Dj:</label>
         <select id="dropdown" v-model="selectedDJ">
         <option disabled value="">Select a DJ</option>
         <option v-for="dj in djs" :key="dj" :value="dj.id">{{dj.username}}</option>

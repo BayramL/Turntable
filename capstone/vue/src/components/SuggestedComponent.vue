@@ -66,11 +66,15 @@ export default {
 </script>
 
 <style scoped>
+
 * {
   font-family: "Righteous", cursive;
   font-size: 15px;
 }
 
+li {
+  border-radius: 20px;
+}
 
 .albumImage {
   width: 50px;

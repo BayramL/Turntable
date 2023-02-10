@@ -1,9 +1,15 @@
 <template>
 <loader-layout> 
   <div class="container">
+
+    <div class="user-avatar">
+        <p>Bring on the beats, {{ appUser.username }}!</p>
+    </div>
+
     <playlist-component class="left"/>
     <spotify-embed class="middle"/>
     <suggested-component class="right" />
+    
   </div>
   </loader-layout>
 </template>
@@ -16,7 +22,8 @@ import EventServices from '../services/EventService'
 export default {
   data() {
       return {
-          eventId: -1
+          eventId: -1,
+          appUser: ""
       }
   },
   components: { 
@@ -24,6 +31,11 @@ export default {
   },
   created() {
     EventServices.getEventIdFromDj().then((response) => this.eventId = response.data)
+  },
+
+  mounted: function () {
+    const user = JSON.parse(window.localStorage.getItem("user"));
+    this.appUser = user;
   }
 
 }
@@ -34,6 +46,7 @@ export default {
 .container {
   display: flex;
   justify-content: space-between;
+  margin-top: 70px;
 }
 
 .left {
@@ -46,5 +59,15 @@ export default {
 
 .right {
   width: 35%;
+}
+.user-avatar {
+  position: absolute;
+  right: 25px;
+  top: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 500px;
+  font-size: 18px;
 }
 </style>
