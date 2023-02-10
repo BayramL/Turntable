@@ -47,6 +47,9 @@ export default {
   },
   created() {
     this.getPlaylist();
+    this.interval = setInterval(() => {
+      this.getPlaylist();
+    }, 500);
   },
 }
 </script>

@@ -8,6 +8,7 @@
           <p>{{ song.name }}</p>
           <p>{{ song.artist }}</p>
         </div>
+        <p>Likes {{ song.likes }}</p>
 
         <button @click="addSongToPlaylist(song.songId)">Add Song</button>
         <button @click="deleteSong(song.songId)">Delete</button>

@@ -33,7 +33,7 @@ public class JdbcSongDao implements SongDao {
     @Override
     public List<Song> getSuggestedSongs(Event event) {
         List<Song> list = new ArrayList<>();
-        String sql = "SELECT * FROM songs JOIN event_songs ON songs.song_id = event_songs.song_id WHERE event_songs.event_id = ? AND suggested = 'suggested'";
+        String sql = "SELECT * FROM songs JOIN event_songs ON songs.song_id = event_songs.song_id WHERE event_songs.event_id = ? AND suggested = 'suggested' ORDER BY likes DESC";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, event.getEventId());
         while (results.next()) {
             list.add(mapToSongSet(results));
@@ -74,7 +74,7 @@ public class JdbcSongDao implements SongDao {
     }
 
     public void incrementLikes(String songId, int eventId) {
-        String sql = "UPDATE event_songs SET likes = likes + 1 WHERE song_id = ? AND event_id = ? AND suggested = 'suggested'";
+        String sql = "UPDATE event_songs SET likes = (likes + 1) WHERE song_id = ? AND event_id = ? AND suggested = 'suggested'";
         jdbcTemplate.update(sql, songId, eventId);
     }
 
@@ -91,6 +91,7 @@ public class JdbcSongDao implements SongDao {
         song.setName(results.getString("name"));
         song.setArtist(results.getString("artist"));
         song.setPicture(results.getString("picture"));
+        song.setLikes(results.getInt("likes"));
         return song;
     }
 
