@@ -55,6 +55,7 @@ export default {
 </script>
 
 <style scoped>
+
 button {
     margin-right: 20px;
 }
@@ -74,6 +75,7 @@ button {
   background-color: rgba(33, 27, 61, 0.5);
   border-radius: 50px;
   padding: 20px;
+  width: 200px;
 }
 
 .albumImage {
