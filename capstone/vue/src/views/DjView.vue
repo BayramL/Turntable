@@ -43,22 +43,29 @@ export default {
 </script>
 
 <style>
+.loader-layout{
+  
+}
 .container {
   display: flex;
   justify-content: space-between;
   margin-top: 70px;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "left middle right";
+  grid-gap: 20px;
 }
 
 .left {
-  width: 35%;
+  width: 100%;
 }
 
 .middle {
-  width: 25%;
+  width: 100%;
 }
 
 .right {
-  width: 35%;
+  width: 100%;
 }
 .user-avatar {
   position: absolute;

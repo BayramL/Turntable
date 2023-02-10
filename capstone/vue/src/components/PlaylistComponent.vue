@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <ul>
+
+   
+        <div class="dj-selects" >
+          <ul>
       <li v-for="song in songs" :key="song.id" class="song-list">
         <img :src="song.picture" alt="album cover" class="albumImage">
         <div class="song-details">
@@ -9,9 +11,11 @@
         </div>
         <button @click="playSong(song.songId)">Select</button>
         <button @click="deleteSong(song.songId)">Delete</button>
-      </li>
-    </ul>
-  </div>
+      </li>  
+      </ul>
+      </div>
+    
+
 </template>
 
 <script>
@@ -68,16 +72,6 @@ button {
   font-size: 15px;
 }
 
-.song-list {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  background-color: rgba(33, 27, 61, 0.5);
-  border-radius: 50px;
-  padding: 20px;
-  width: 200px;
-}
-
 .albumImage {
   width: 50px;
   height: 50px;
@@ -87,4 +81,15 @@ button {
 .song-details {
   flex: 1;
 }
+
+.dj-selects {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: rgba(33, 27, 61, 0.5);
+  border-radius: 50px;
+  padding: 20px;
+  width: 200px;
+}
+
 </style>

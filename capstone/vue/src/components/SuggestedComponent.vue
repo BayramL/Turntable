@@ -1,13 +1,14 @@
 <template>
   <div>
     <ul>
+
       <li v-for="song in songs" :key="song.id">
         <img :src="song.picture" alt="album cover" class="albumImage">
-        
         <div class="song-details">
           <p>{{ song.name }}</p>
           <p>{{ song.artist }}</p>
         </div>
+        
         <p>Likes {{ song.likes }}</p>
 
         <button @click="addSongToPlaylist(song.songId)">Add Song</button>

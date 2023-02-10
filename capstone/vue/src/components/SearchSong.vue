@@ -12,7 +12,7 @@
     <div id="search-img">
     <img src="https://i.scdn.co/image/ab67616d0000b273811bfdc4f55b3a7484524aaf" alt="Song picture" id="searchedimg" height="200" width="200">
     </div>
-
+    
     <button @click="addSong">Add Song</button>
   </div>
 </template>
